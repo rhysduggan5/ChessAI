@@ -19,9 +19,10 @@ const Tile = (props) => {
       height: "55px",
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     }}>
       {
+        
         {
           'p': <BlackPawn />,
           'P': <WhitePawn />,

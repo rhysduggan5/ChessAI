@@ -15,75 +15,100 @@ import WhiteKnightImage from '../assets/white-knight.svg';
 
 import BlackKingImage from '../assets/black-king.svg';
 import WhiteKingImage from '../assets/white-king.svg';
+import Draggable from 'react-draggable';
 
 export function BlackPawn(props) {
   return (
-    <img width="50px" height="50px" src={BlackPawnImage} alt="Black Pawn"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={BlackPawnImage} alt="Black Pawn"/>
+    </Draggable>
   );
 }
 
 export function WhitePawn(props) {
   return (
-    <img width="50px" height="50px" src={WhitePawnImage} alt="White Pawn"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhitePawnImage} alt="White Pawn"/>
+    </Draggable>
   );
 }
 
 export function BlackRook(props) {
   return (
-    <img width="50px" height="50px" src={BlackRookImage} alt="Black Rook"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={BlackRookImage} alt="Black Rook"/>
+    </Draggable>
   );
 }
 
 export function WhiteRook(props) {
   return (
-    <img width="50px" height="50px" src={WhiteRookImage} alt="White Rook"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhiteRookImage} alt="White Rook"/>
+    </Draggable>
   );
 }
 
 export function BlackQueen(props) {
   return (
-    <img width="50px" height="50px" src={BlackQueenImage} alt="Black Queen"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={BlackQueenImage} alt="Black Queen"/>
+    </Draggable>
   );
 }
 
 export function WhiteQueen(props) {
   return (
-    <img width="50px" height="50px" src={WhiteQueenImage} alt="White Queen"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhiteQueenImage} alt="White Queen"/>
+    </Draggable>
   );
 }
 
 export function BlackBishop(props) {
   return (
-    <img width="50px" height="50px" src={BlackBishopImage} alt="Black Bishop"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={BlackBishopImage} alt="Black Bishop"/>
+    </Draggable>
   );
 }
 
 export function WhiteBishop(props) {
   return (
-    <img width="50px" height="50px" src={WhiteBishopImage} alt="White Bishop"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhiteBishopImage} alt="White Bishop"/>
+    </Draggable>
   );
 }
 
 export function BlackKnight(props) {
   return (
-    <img width="45px" height="45px" src={BlackKnightImage} alt="Black Knight"/>
+    <Draggable>
+      <img draggable="false" width="45px" height="45px" src={BlackKnightImage} alt="Black Knight"/>
+    </Draggable>
   );
 }
 
 export function WhiteKnight(props) {
   return (
-    <img width="50px" height="50px" src={WhiteKnightImage} alt="White Knight"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhiteKnightImage} alt="White Knight"/>
+    </Draggable>
   );
 }
 
 export function BlackKing(props) {
   return (
-    <img width="50px" height="50px" src={BlackKingImage} alt="Black King"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={BlackKingImage} alt="Black King"/>
+    </Draggable>
   );
 }
 
 export function WhiteKing(props) {
   return (
-    <img width="50px" height="50px" src={WhiteKingImage} alt="White King"/>
+    <Draggable>
+      <img draggable="false" width="50px" height="50px" src={WhiteKingImage} alt="White King"/>
+    </Draggable>
   );
 }
