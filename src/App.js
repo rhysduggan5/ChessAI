@@ -2,19 +2,15 @@ import './App.css';
 
 import { Grid } from '@mui/material'
 
+import { initialBoard } from './Utils'
+
 import Board from './components/Board';
+
+import React, { useState } from 'react'
 
 function App() {
 
-  var board = []
-  
-  for (let i = 0; i < 64; i++) {
-    board.push({
-      row: Math.floor(i / 8),
-      tileNumber: i,
-      piece: ""
-    });
-  }
+  const [board, setBoard] = useState(initialBoard())
 
   return (
     <div className="app">

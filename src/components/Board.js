@@ -17,7 +17,6 @@ const Board = (props) => {
     }
   }
 
-
   return (
     <div className='board' style={{
       borderColor: "#72757e",
