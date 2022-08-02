@@ -1,4 +1,15 @@
-import { BlackPawn } from './Pieces'
+import { BlackPawn, 
+  WhitePawn, 
+  BlackRook, 
+  WhiteRook, 
+  BlackBishop, 
+  WhiteBishop, 
+  BlackKing, 
+  WhiteKing, 
+  BlackQueen, 
+  WhiteQueen, 
+  BlackKnight, 
+  WhiteKnight } from './Pieces'
 
 const Tile = (props) => {
   return (
@@ -12,7 +23,18 @@ const Tile = (props) => {
     }}>
       {
         {
-          'p': <BlackPawn />
+          'p': <BlackPawn />,
+          'P': <WhitePawn />,
+          'r': <BlackRook />,
+          'R': <WhiteRook />,
+          'b': <BlackBishop />,
+          'B': <WhiteBishop />,
+          'k': <BlackKing />,
+          'K': <WhiteKing />,
+          'n': <BlackKnight />,
+          'N': <WhiteKnight />,
+          'q': <BlackQueen />,
+          'Q': <WhiteQueen />,
         }[props.piece] || <div/>
       }
     </div>
