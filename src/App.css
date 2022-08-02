@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #fef6e4;
+  background-color: #fffffe;
 }
 
 * {
@@ -11,17 +11,14 @@ body {
   padding: 0;
 }
 
-.board {
-  display: flex;
-}
 
 .app {
-  background-color: #f3d2c1;
-  margin: 10px;
-  padding: 10px;
+  background-color: #f2f4f6;
+  margin: 20px;
+  padding: 20px;
   border-radius: 10px;
   height: 100%;
-  width: (100% - 10px);
+  width: (100% - 40px);
   min-width: 500px;
   min-height: 500px;
 }

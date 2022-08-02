@@ -5,20 +5,16 @@ import { Grid } from '@mui/material'
 import Board from './components/Board';
 
 function App() {
+
   var board = []
   
-  for (let i = 0; i < 8; i++) {
-    board.push([]);
-    for (let j = 0; j < 8; j++) {
-      board[i].push({
-        row: j,
-        tileNumber: i + j * 8,
-        piece: "p"
-      })
-    }
+  for (let i = 0; i < 64; i++) {
+    board.push({
+      row: Math.floor(i / 8),
+      tileNumber: i,
+      piece: ""
+    });
   }
-
-  console.log(board);
 
   return (
     <div className="app">
