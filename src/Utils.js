@@ -1,4 +1,6 @@
-import { numberReg, baseBoardFEN } from './Consts'
+import { numberReg, baseBoardFEN } from './Constants'
+
+import { useReducer } from 'react'
 
 export const initialBoard = () => {
   const pieces = piecesFromFEN(baseBoardFEN);
@@ -44,5 +46,12 @@ export const boardFromPieces = (pieces) => {
     });
   }
 
+  console.log(board);
+
   return board;
 } 
+
+export const useForceRender = () => {
+  const [, forceRender] = useReducer(x => !x, true)
+  return forceRender
+}

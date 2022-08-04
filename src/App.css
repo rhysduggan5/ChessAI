@@ -22,3 +22,7 @@ body {
   min-width: 500px;
   min-height: 500px;
 }
+
+.droppped-here {
+  background-color: red !important;
+}

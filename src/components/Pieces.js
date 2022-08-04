@@ -16,20 +16,32 @@ import WhiteKnightImage from '../assets/white-knight.svg';
 import BlackKingImage from '../assets/black-king.svg';
 import WhiteKingImage from '../assets/white-king.svg';
 import Draggable from 'react-draggable';
+import { useDrag, DragPreviewImage } from 'react-dnd'
+
+import { PieceTypes } from '../Constants'
+
+import { useState } from 'react'
 
 export function BlackPawn(props) {
+  const [visible, setVisible] = useState(true)
+
   return (
-    <Draggable>
-      <img draggable="false" width="50px" height="50px" src={BlackPawnImage} alt="Black Pawn"/>
-    </Draggable>
+      <img draggable style={{
+        opacity: visible ? 1 : 0
+      }} onDragStart={(e) => {
+        e.dataTransfer.setData('text', JSON.stringify(["p", props.pos]));
+        e.dataTransfer.dropEffect = 'none'
+        e.dataTransfer.effectAllowed = 'move'
+        setVisible(false);
+      }} onDragEnd={(e) => {
+        setVisible(true);
+      }} width="50px" height="50px" src={BlackPawnImage} alt="Black Pawn"/>
   );
 }
 
 export function WhitePawn(props) {
   return (
-    <Draggable>
-      <img draggable="false" width="50px" height="50px" src={WhitePawnImage} alt="White Pawn"/>
-    </Draggable>
+    <img draggable="false" width="50px" height="50px" src={WhitePawnImage} alt="White Pawn"/>
   );
 }
 
@@ -52,7 +64,7 @@ export function WhiteRook(props) {
 export function BlackQueen(props) {
   return (
     <Draggable>
-      <img draggable="false" width="50px" height="50px" src={BlackQueenImage} alt="Black Queen"/>
+      <img draggable="false" width="48px" height="48px" src={BlackQueenImage} alt="Black Queen"/>
     </Draggable>
   );
 }
@@ -60,7 +72,7 @@ export function BlackQueen(props) {
 export function WhiteQueen(props) {
   return (
     <Draggable>
-      <img draggable="false" width="50px" height="50px" src={WhiteQueenImage} alt="White Queen"/>
+      <img draggable="false" width="48px" height="48px" src={WhiteQueenImage} alt="White Queen"/>
     </Draggable>
   );
 }
@@ -100,7 +112,7 @@ export function WhiteKnight(props) {
 export function BlackKing(props) {
   return (
     <Draggable>
-      <img draggable="false" width="50px" height="50px" src={BlackKingImage} alt="Black King"/>
+      <img draggable="false" width="46px" height="46px" src={BlackKingImage} alt="Black King"/>
     </Draggable>
   );
 }
@@ -108,7 +120,7 @@ export function BlackKing(props) {
 export function WhiteKing(props) {
   return (
     <Draggable>
-      <img draggable="false" width="50px" height="50px" src={WhiteKingImage} alt="White King"/>
+      <img draggable="false" width="46px" height="46px" src={WhiteKingImage} alt="White King"/>
     </Draggable>
   );
 }

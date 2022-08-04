@@ -9,6 +9,7 @@ const Board = (props) => {
     for (let j = 0; j < 8; j++) {
       let tile = props.board[i + j * 8];
       components[i].push(<Tile
+        dropPiece={props.dropPiece}
         key={`tile:${tile.tileNumber}`}
         row={tile.row}
         tileNumber={tile.tileNumber}
