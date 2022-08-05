@@ -2,20 +2,17 @@ import './App.css';
 
 import { Grid } from '@mui/material'
 
-import { initialBoard, useForceRender } from './Utils'
+import { boardFromFEN, FENFromBoard, canMovePiece, useForceRender, getPossibleMoves } from './Utils'
 import { baseBoardFEN } from './Constants'
 
 import Board from './components/Board';
 
 import React, { useState } from 'react'
 
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend'
-
 function App() {
 
-  const [board, setBoard] = useState(initialBoard())
   const [fen, setFen] = useState(baseBoardFEN)
+  const [board, setBoard] = useState(boardFromFEN(fen))
 
   const forceRender = useForceRender()
 
@@ -27,17 +24,60 @@ function App() {
     data = JSON.parse(data)
 
     let newBoard = board;
-    if (canMovePiece(data[0], data[1], tilePos)) {
+    if (canMovePiece(newBoard, data[1], tilePos)) {
       newBoard[data[1]].piece = "";
-      newBoard[tilePos].piece = data[0];
+      newBoard[data[1]].color = "";
+
+      //Promotion
+      if (data[0].toLowerCase() === "p" && (tilePos <= 7 || tilePos >= 56)) {
+        newBoard[tilePos].piece = data[2] === "black" ? "q" : "Q";
+      } else {
+        newBoard[tilePos].piece = data[0];
+      }
+      
+      newBoard[tilePos].color = data[2];
     }
 
-    setBoard(newBoard);
-    forceRender();
+    for (let i = 0; i < 64; i++) {
+      newBoard[i].highlight = ""
+    }
+
+    updateBoard(newBoard);
   }
 
-  const canMovePiece = (piece, currentPos, targetPos) => {
-    return true;
+  const updateBoard = (newBoard) => {
+    setBoard(newBoard);
+    forceRender();
+    setFen(FENFromBoard(newBoard));
+
+    console.log(FENFromBoard(newBoard));
+  }
+
+  const onPieceStartDrag = (tileNumber) => {
+    let currentBoard = board
+    let availableMoves = getPossibleMoves(currentBoard, tileNumber);
+
+    availableMoves.forEach((pos) => {
+      currentBoard[pos].highlight = "yes"
+    })
+
+    updateBoard(currentBoard);
+  }
+
+  const onPieceDragEnter = (_, tileNumber) => {
+    let newBoard = board;
+
+    newBoard[tileNumber].highlight = "yes"
+
+    updateBoard(newBoard)
+  }
+
+  const onPieceDragLeave = (_, tileNumber) => {
+    let newBoard = board;
+
+    newBoard[tileNumber].highlight = ""
+    
+    updateBoard(newBoard)
   }
 
   return (
@@ -50,7 +90,10 @@ function App() {
         <Board
           item xs={4}
           dropPiece={dropPiece}
-          board={board}/>
+          board={board}
+          onPieceStartDrag={onPieceStartDrag}
+          onDragEnter={onPieceDragEnter}
+          onDragLeave={onPieceDragLeave}/>
         <div/>
       </Grid>
     </div>

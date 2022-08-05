@@ -1,26 +1,29 @@
-import { BlackPawn, 
-  WhitePawn, 
-  BlackRook, 
-  WhiteRook, 
-  BlackBishop, 
-  WhiteBishop, 
-  BlackKing, 
-  WhiteKing, 
-  BlackQueen, 
-  WhiteQueen, 
-  BlackKnight, 
-  WhiteKnight } from './Pieces'
-
+import { Piece } from './Piece'
 
 const Tile = (props) => {
+
+  let background = (props.tileNumber + props.row) % 2 === 0 ? "#fef6e4" : "#00ebc7";
+
+  if (props.highlight !== "") {
+    background = (props.tileNumber + props.row) % 2 === 0 ? "rgb(255, 250, 157)" : "rgb(182, 243, 142)" ;
+  }
+
   return (
-    <div className="drop-target" 
-      onDragOver={event => event.preventDefault()} 
+    <div
+      onDragOver={(e) =>  {
+        e.preventDefault()
+      }} 
+      onDragEnter={(e) => {
+        //props.onDragEnter(e, props.tileNumber)
+      }}
+      onDragLeave={(e) => {
+        //props.onDragLeave(e, props.tileNumber)
+      }}
       onDrop={(e) => {
         props.dropPiece(e, props.tileNumber)
       }}
       style={{
-        backgroundColor: (props.tileNumber + props.row) % 2 === 0 ? "#fef6e4" : "#00ebc7",
+        backgroundColor: background,
         width: "55px",
         height: "55px",
         display: 'flex',
@@ -28,30 +31,14 @@ const Tile = (props) => {
         justifyContent: 'center'
       }}>
       {
-        
         {
-          'P': <WhitePawn pos={props.tileNumber}/>,
-          'p': <BlackPawn pos={props.tileNumber}/>,
-        }[props.piece]
+          '' : <div/>
+        }[props.piece] || <Piece 
+          color={props.color}
+          piece={props.piece} 
+          pos={props.tileNumber}
+          onPieceStartDrag={props.onPieceStartDrag}/>
       }
-
-      {/* {
-        
-        {
-          'p': <BlackPawn />,
-          'P': <WhitePawn />,
-          'r': <BlackRook />,
-          'R': <WhiteRook />,
-          'b': <BlackBishop />,
-          'B': <WhiteBishop />,
-          'k': <BlackKing />,
-          'K': <WhiteKing />,
-          'n': <BlackKnight />,
-          'N': <WhiteKnight />,
-          'q': <BlackQueen />,
-          'Q': <WhiteQueen />,
-        }[props.piece]
-      } */}
     </div>
   );
 }

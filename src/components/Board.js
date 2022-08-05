@@ -12,8 +12,13 @@ const Board = (props) => {
         dropPiece={props.dropPiece}
         key={`tile:${tile.tileNumber}`}
         row={tile.row}
+        color={tile.color}
         tileNumber={tile.tileNumber}
         piece={tile.piece}
+        highlight={tile.highlight}
+        onPieceStartDrag={props.onPieceStartDrag}
+        onDragEnter={props.onDragEnter}
+        onDragLeave={props.onDragLeave}
       />);
     }
   }
