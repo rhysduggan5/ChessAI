@@ -7,9 +7,13 @@ import { baseBoardFEN } from './Constants'
 
 import Board from './components/Board';
 
-import React, { useState } from 'react'
+import { preLoadBoards } from './engine/BitBoards'
+import Position from './engine/Position'
 
-function App() {
+import React, { useState, useEffect } from 'react'
+
+function App()  {
+  let position = undefined;
   let baseFen = baseBoardFEN.split(" ");
 
   const [fen, setFen] = useState(baseFen[0]);
@@ -152,6 +156,18 @@ function App() {
     
     updateBoard(newBoard)
   }
+
+  const setup = async () => {
+    console.log("Starting pre-load");
+    await preLoadBoards()
+    console.log("Finished pre-load");
+    position = new Position(fen);
+  }
+
+  useEffect(()=>{
+    setup()
+  }, [])
+  
 
   return (
     <div className="app">
