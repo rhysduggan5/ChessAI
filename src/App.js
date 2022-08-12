@@ -13,8 +13,10 @@ import Position from './engine/Position'
 import React, { useState, useEffect } from 'react'
 
 function App()  {
-  let position = undefined;
   let baseFen = baseBoardFEN.split(" ");
+
+  const [loading, setLoading] = useState(true);
+  const [position, setPosition] = useState();
 
   const [fen, setFen] = useState(baseFen[0]);
   const [toMove, setToMove] = useState(baseFen[1]);
@@ -161,17 +163,19 @@ function App()  {
     console.log("Starting pre-load");
     await preLoadBoards()
     console.log("Finished pre-load");
-    position = new Position(fen);
+    setPosition(new Position(fen));
+    setLoading(false);
+    forceRender();
   }
 
   useEffect(()=>{
-    setup()
+    setup() 
   }, [])
   
 
   return (
     <div className="app">
-      <Grid
+      {loading ? <div>Loading</div> : <Grid
         container
         direction="row"
         wrap="nowrap">
@@ -179,12 +183,12 @@ function App()  {
         <Board
           item xs={4}
           dropPiece={dropPiece}
-          board={board}
+          position={position}
           onPieceStartDrag={onPieceStartDrag}
           onDragEnter={onPieceDragEnter}
           onDragLeave={onPieceDragLeave}/>
         <div/>
-      </Grid>
+      </Grid>}
     </div>
   );
 }

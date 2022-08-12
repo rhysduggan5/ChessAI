@@ -11,9 +11,41 @@ export default class Position {
   queens = undefined;
   kings = undefined;
 
+  getPawns () {
+    return this.pawns;
+  }
+
+  getBishops () {
+    return this.bishops;
+  }
+
+  getKnights () {
+    return this.knights;
+  }
+
+  getRooks () {
+    return this.rooks;
+  }
+
+  getQueens () {
+    return this.queens;
+  }
+
+  getKings () {
+    return this.kings;
+  }
+
   //Color bitboards
   whitePieces = undefined;
   blackPieces = undefined;
+
+  getWhitePieces () {
+    return this.whitePieces;
+  }
+
+  getBlackPieces () {
+    return this.blackPieces;
+  }
 
   constructor(fen) {
     const fenArray = fen.split(" ");
@@ -23,8 +55,10 @@ export default class Position {
     this.initialiseBoards()
 
     this.setPosition(boardString)
+  }
 
-    this.printBoards()
+  getPieces() {
+    return this.whitePieces.or(this.blackPieces);
   }
 
   initialiseBoards() {
