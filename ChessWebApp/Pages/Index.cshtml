@@ -1,10 +1,57 @@
 ﻿@page
+@using ChessWebApp.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to my chess app</h1>
+    
+    <br/>
+    
+    <div style="display: flex">
+        @foreach (var pieces in Model.Pieces)
+        {
+            <div className='col'>
+                @foreach (var piece in pieces)
+                {
+                    var backgroundColor = (piece.TileNumber + Math.Floor((double)piece.TileNumber / 8)) % 2 == 0 
+                        ? "#fef6e4" : "#00ebc7";
+                    
+                    <div class="tile" style="background-color: @backgroundColor">
+                        @{
+                            var visible = true;
+                            var src = piece.PieceChar switch
+                            {
+                                'p' => "Assets/black-pawn.svg",
+                                'P' => "Assets/white-pawn.svg",
+                                'b' => "Assets/black-bishop.svg",
+                                'B' => "Assets/white-bishop.svg",
+                                'n' => "Assets/black-knight.svg",
+                                'N' => "Assets/white-knight.svg",
+                                'r' => "Assets/black-rook.svg",
+                                'R' => "Assets/white-rook.svg",
+                                'q' => "Assets/black-queen.svg",
+                                'Q' => "Assets/white-queen.svg",
+                                'k' => "Assets/black-king.svg",
+                                'K' => "Assets/white-king.svg",
+                                _ => ""
+                                };
+                        }
+
+                        @if (piece.PieceChar != '-')
+                        {
+                            <img
+                                style="opacity: @(visible ? 1 : 0)"
+                                src="@src"
+                                alt=""
+                                width="50px"
+                                height="50px"/>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
 </div>

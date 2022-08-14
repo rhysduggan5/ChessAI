@@ -6,4 +6,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Assets\black-bishop.svg" />
+    <None Include="wwwroot\Assets\black-king.svg" />
+    <None Include="wwwroot\Assets\black-knight.svg" />
+    <None Include="wwwroot\Assets\black-pawn.svg" />
+    <None Include="wwwroot\Assets\black-queen.svg" />
+    <None Include="wwwroot\Assets\black-rook.svg" />
+    <None Include="wwwroot\Assets\white-bishop.svg" />
+    <None Include="wwwroot\Assets\white-king.svg" />
+    <None Include="wwwroot\Assets\white-knight.svg" />
+    <None Include="wwwroot\Assets\white-pawn.svg" />
+    <None Include="wwwroot\Assets\white-queen.svg" />
+    <None Include="wwwroot\Assets\white-rook.svg" />
+  </ItemGroup>
+
 </Project>

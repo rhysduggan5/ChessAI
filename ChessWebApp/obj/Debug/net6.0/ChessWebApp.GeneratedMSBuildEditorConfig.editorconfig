@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/rhysduggan/Documents/Projects/ChessAI/ChessWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/rhysduggan/Documents/Projects/ChessAI/ChessWebApp/Components/ChessPiece.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DaGVzc1BpZWNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/rhysduggan/Documents/Projects/ChessAI/ChessWebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
